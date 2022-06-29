@@ -24,12 +24,15 @@ async function run(){
             console.log(result); 
             res.send(result); 
         })
+        // Get the users from database. 
         app.get('/getuser', async (req, res) =>{
             const query = {}; 
             const gettingUsers = usersCollection.find(query); 
             const results = await gettingUsers.toArray(); 
             res.send(results); 
         })
+
+        // Delete a particular user. 
         app.delete('/deleteUser/:id', async (req, res)=>{
             const id = req.params.id; 
             const query = {_id:ObjectId(id)}; 
